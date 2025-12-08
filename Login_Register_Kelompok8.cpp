@@ -68,6 +68,21 @@ void forgotPassword(User &user)
     } while (user.forgotpassword.length() != 10);
 
     user.password = user.forgotpassword;
+
+    ifstream inFile("user_data.txt");
+    string content = "";
+    string fileUsername, filePassword;
+    while (getline(inFile, fileUsername) && getline(inFile, filePassword))
+    {
+        if (fileUsername == user.usernameInput)
+        {
+            content += fileUsername + "\n" + user.forgotpassword + "\n";
+        }
+        else
+        {
+            content += fileUsername + "\n" + filePassword + "\n";
+        }
+    }
     cout << "Password reset successful! Your new password is: " << user.forgotpassword << "\n";
 }
 
