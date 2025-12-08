@@ -32,8 +32,14 @@ void registerUser(User &user)
 
     cout << "\n=== Registration Complete ===\n";
     cout << "Saved Username : " << user.username << "\n";
-    cout << "Saved Password : " << user.password << "\n\n";
+        cout << "  ✓ Password : ";
+    
+    for (int i = 0; i < user.password.length(); i++) {
+        cout << "*";  
+    }
+    cout << "\n\n";
 }
+
 
 void savedata(User &user)
 {
