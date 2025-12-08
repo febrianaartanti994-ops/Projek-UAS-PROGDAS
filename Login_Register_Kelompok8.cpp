@@ -96,31 +96,57 @@ void savedata(User &user)
 void forgotPassword(User &user)
 {
     cout << "\n====Forgot Password====\n";
-      do {
-        cout << "Enter 10 character password: \n";
-        cin >> user.forgotpassword;
-        if (user.forgotpassword.length() != 10)
-            cout << "Password must be exactly 10 characters!\n";
-    } while (user.forgotpassword.length() != 10);
-
-    user.password = user.forgotpassword;
 
     ifstream inFile("user_data.txt");
-    string content = "";
+    if (!inFile.is_open()) {
+        cout << "Error loading data.\n";
+        return;
+    }
+
     string fileUsername, filePassword;
-    while (getline(inFile, fileUsername) && getline(inFile, filePassword))
-    {
-        if (fileUsername == user.usernameInput)
-        {
-            content += fileUsername + "\n" + user.forgotpassword + "\n";
-        }
-        else
-        {
-            content += fileUsername + "\n" + filePassword + "\n";
+    string newContent = "";
+    string oldPassword = "";
+    bool userFound = false;
+    while (getline(inFile, fileUsername) && getline(inFile, filePassword)) {
+        if (fileUsername == user.usernameInput) {
+            oldPassword = filePassword;  
+            userFound = true;
         }
     }
+    inFile.close();
+
+    if (!userFound) {
+        cout << "Username not found!\n";
+        return;
+    }
+    do {
+        cout << "Enter NEW 10 character password (must be different from old one): \n";
+        cin >> user.forgotpassword;
+
+        if (user.forgotpassword.length() != 10)
+            cout << "Password must be exactly 10 characters!\n";
+        else if (user.forgotpassword == oldPassword)
+            cout << "New password cannot be the SAME as old password!\n";
+
+    } while (user.forgotpassword.length() != 10 || user.forgotpassword == oldPassword);
+
+    ifstream fileRead("user_data.txt");
+    newContent = "";
+    while (getline(fileRead, fileUsername) && getline(fileRead, filePassword)) {
+        if (fileUsername == user.usernameInput)
+            newContent += fileUsername + "\n" + user.forgotpassword + "\n";
+        else
+            newContent += fileUsername + "\n" + filePassword + "\n";
+    }
+    fileRead.close();
+
+    ofstream fileWrite("user_data.txt");
+    fileWrite << newContent;
+    fileWrite.close();
+
     cout << "Password reset successful! Your new password is: " << user.forgotpassword << "\n";
 }
+
 
 void loginUser(User &user)
 {
