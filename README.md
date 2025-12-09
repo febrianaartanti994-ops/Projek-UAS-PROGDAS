@@ -39,13 +39,6 @@ Project ini dibuat sebagai tugas Ujian Akhir Semester mata kuliah Pemrograman Da
 
 ---
 
-## 🛠️ Teknologi yang Digunakan
-
-- **Bahasa Pemrograman:** C++
-- **Library:** iostream, fstream, dan string
-
----
-
 
 </div>
 
