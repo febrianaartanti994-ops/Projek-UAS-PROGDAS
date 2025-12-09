@@ -25,9 +25,10 @@ Project ini dibuat sebagai tugas Ujian Akhir Semester mata kuliah Pemrograman Da
 | No | Nama | NIM |
 |----|------|-----|
 | 1 | **FEBRIANA REGINA ARTANTI** | 25051204148 | 
-| 2 | **Nama Anggota 2** | 123456790 | 
+| 2 | **DIRLY RAHMAT PRIAMBUDI** | 25051204039 | 
 | 3 | **Nama Anggota 3** | 123456791 |
 | 4 | **Nama Anggota 4** | 123456792 | 
+
 
 ---
 
