@@ -216,7 +216,7 @@ void displayMainMenu()
 
     for (int i = 0; i < 3; i++)
     {
-        cout << "      [" << (i + 1) << "] " << menuOptions[i] << "\n";
+        cout << "      [" << (i++) << "] " << menuOptions[i] << "\n";
     }
     cout << "\n  Choose an option (1-3): ";
 }
